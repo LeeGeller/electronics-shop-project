@@ -38,3 +38,7 @@ def test_item_all():
 
     object_2 = Item("No Смартфон", 100, 666)
     assert len(Item.all) == 2
+    assert isinstance(Item.all, list)
+
+    for value in Item.all:
+        assert isinstance(value, object)
