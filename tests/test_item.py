@@ -30,7 +30,6 @@ def test_pay_rate():
 
 
 def test_item_all():
-
     assert len(Item.all) == 0
 
     object_1 = Item("Смартфон", 10000, 20)
