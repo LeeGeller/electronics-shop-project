@@ -27,3 +27,14 @@ def test_pay_rate():
     assert object_2.price == 100
     assert object_1.calculate_total_price() == (10000 * 0.5) * 20
     assert object_1.pay_rate == 0.5
+
+
+def test_item_all():
+
+    assert len(Item.all) == 0
+
+    object_1 = Item("Смартфон", 10000, 20)
+    assert len(Item.all) == 1
+
+    object_2 = Item("No Смартфон", 100, 666)
+    assert len(Item.all) == 2
