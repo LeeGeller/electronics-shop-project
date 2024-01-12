@@ -33,3 +33,17 @@ def test_pay_rate(fixture_class_item, fixture_class_item_2):
 def test_item_all(fixture_class_item, fixture_class_item_2):
     for value in Item.all:
         assert isinstance(value, object)
+
+
+def test_getter_and_setter(fixture_class_item):
+    item = fixture_class_item
+    item.name = "smartphoneOne"
+    assert item.name == "Smartphone"
+
+    item.name = "smart"
+    assert item.name == "Smart"
+
+    item.name = 111
+    assert item.name == "111"
+
+
