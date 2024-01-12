@@ -36,6 +36,11 @@ class Item:
         self.price *= self.pay_rate
 
     @property
-    def name(self):
+    def name(self) -> str:
         return f"{self.__name}"
+
+    @name.setter
+    def name(self, name: str) -> None:
+        if name.isalpha():
+            self.__name = name.strip[:10]
 
