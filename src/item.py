@@ -37,10 +37,16 @@ class Item:
 
     @property
     def name(self) -> str:
+        """
+        Get name
+        """
         return f"{self.__name}"
 
     @name.setter
     def name(self, name: str) -> None:
-        if name.isalpha():
-            self.__name = name.strip[:10]
+        """
+        Inout new name
+        """
+        self.__name = str(name).strip()[:10].capitalize()
+
 
