@@ -1,5 +1,4 @@
 import csv
-import pathlib
 
 
 class Item:
@@ -17,10 +16,18 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.__name = name
+        self.__name = None
+        self.name = name
         self.price = price
         self.quantity = quantity
         self.all.append(Item)
+
+    def __repr__(self):
+        return (f"{self.__name} privat name\n"
+                f"{self.name} not privat name\n"
+                f"P{self.price} price\n"
+                f"{self.quantity} quantity\n"
+                f"{self.all} all items\n")
 
     def calculate_total_price(self) -> float:
         """
@@ -57,10 +64,14 @@ class Item:
         Get csv file and create 5 classes
         """
         cls.all.clear()
+
         with open(path_file, 'r', encoding='windows-1251') as csv_file:
             file = csv.DictReader(csv_file)
+
             for row in file:
-                name = row['name']
-                price = float(row['price'])
-                quantity = float(row['quantity'])
-                cls(name, price, quantity)
+                cls.all.append(cls(row['name'], float(row['price']), float(row['quantity'])))
+            return cls.all
+
+    @staticmethod
+    def string_to_number(self, string: str) -> float:
+        return float(string)
