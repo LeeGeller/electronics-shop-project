@@ -1,3 +1,5 @@
+import pathlib
+
 from src.item import Item
 
 
@@ -47,3 +49,7 @@ def test_getter_and_setter(fixture_class_item):
     assert item.name == "111"
 
 
+def test_instantiate_from_csv():
+    ROOT = pathlib.Path(__file__).parent.parent
+    Item.instantiate_from_csv(pathlib.Path.joinpath(ROOT / 'src/items.csv'))
+    assert len(Item.all) == 5
