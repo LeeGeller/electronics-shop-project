@@ -52,4 +52,12 @@ def test_getter_and_setter(fixture_class_item):
 def test_instantiate_from_csv():
     ROOT = pathlib.Path(__file__).parent.parent
     Item.instantiate_from_csv(pathlib.Path.joinpath(ROOT / 'src/items.csv'))
+
     assert len(Item.all) == 5
+
+    item1 = Item.all[0]
+    assert item1.name == 'Смартфон'
+
+def test_string_to_number():
+    assert Item.string_to_number('2') == 2
+    assert Item.string_to_number('2,5') == 2.5
