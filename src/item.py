@@ -73,5 +73,5 @@ class Item:
             return cls.all
 
     @staticmethod
-    def string_to_number(self, string: str) -> float:
-        return float(string)
+    def string_to_number(string: str) -> float:
+        return float(string.strip().replace(',', '.'))
