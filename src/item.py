@@ -1,3 +1,4 @@
+import csv
 
 
 class Item:
@@ -49,4 +50,15 @@ class Item:
         """
         self.__name = str(name).strip()[:10].capitalize()
 
+    @classmethod
+    def instantiate_from_csv(cls, path_file):
+        with open(path_file, 'r', encoding='windows-1251') as csv_file:
+            file = csv.DictReader(csv_file)
+            for row in file:
+                name = row['name']
+                price = float(row['price'])
+                quantity = float(row['quantity'])
+                cls(name, price, quantity)
 
+
+print(Item.instantiate_from_csv('items.csv'))
