@@ -1,4 +1,3 @@
-import os
 import pathlib
 
 from src.item import Item
