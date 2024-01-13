@@ -74,4 +74,7 @@ class Item:
 
     @staticmethod
     def string_to_number(string: str) -> float:
+        """
+        Change from strint to float
+        """
         return float(string.strip().replace(',', '.'))
