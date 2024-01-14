@@ -20,7 +20,7 @@ class Item:
         self.name = name
         self.price = price
         self.quantity = quantity
-        self.all.append(Item)
+        self.all.append(self)
 
     def __repr__(self):
         return (f"{self.__name} privat name\n"
@@ -69,8 +69,7 @@ class Item:
             file = csv.DictReader(csv_file)
 
             for row in file:
-                cls.all.append(cls(row['name'], float(row['price']), float(row['quantity'])))
-            return cls.all
+                cls(row['name'], float(row['price']), float(row['quantity']))
 
     @staticmethod
     def string_to_number(string: str) -> int:
