@@ -8,11 +8,11 @@ def test_check_len_item_all_if_len_zero():
     assert len(Item.all) == 0
 
 
-def test_check_len_item_all_if_len_one(fixture_class_item):
+def test_check_len_item_all_if_len_one():
     Item.all.clear()
-    fixture_class_item
+    item = Item('Телефон', 10000, 5)
 
-    assert len(Item.all) == 1
+    assert len(item.all) == 1
 
 
 def test_init_object_item(fixture_class_item):
