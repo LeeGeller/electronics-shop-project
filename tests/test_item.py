@@ -4,11 +4,15 @@ from src.item import Item
 
 
 def test_check_len_item_all_if_len_zero():
+    Item.all.clear()
     assert len(Item.all) == 0
 
 
-def test_check_len_item_all_if_len_one(fixture_class_item):
-    assert len(Item.all) == 1
+def test_check_len_item_all_if_len_one():
+    Item.all.clear()
+    item = Item('Телефон', 10000, 5)
+
+    assert len(item.all) == 1
 
 
 def test_init_object_item(fixture_class_item):
@@ -63,3 +67,9 @@ def test_string_to_number():
     assert Item.string_to_number('2') == 2
     assert Item.string_to_number('2.5') == 2
     assert Item.string_to_number('2,5') == 2
+
+
+def test_metods_repr_and_str():
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    assert str(item1) == 'Смартфон'
