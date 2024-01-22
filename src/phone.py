@@ -14,7 +14,8 @@ class Phone(Item):
         return self._number_of_sim
 
     @number_of_sim.setter
-    def number_of_sim(self, count):
+    def number_of_sim(self, count: int) -> None:
         if isinstance(count, int) and count > 0:
             self._number_of_sim = count
-        raise Exception
+        else:
+            raise Exception
