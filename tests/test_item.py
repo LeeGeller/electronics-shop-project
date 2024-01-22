@@ -1,6 +1,7 @@
 import pathlib
 
 from src.item import Item
+from src.phone import Phone
 
 
 def test_check_len_item_all_if_len_zero():
@@ -44,10 +45,10 @@ def test_item_all(fixture_class_item, fixture_class_item_2):
 def test_getter_and_setter(fixture_class_item):
     item = fixture_class_item
     item.name = "smartphoneOne"
-    assert item.name == "Smartphone"
+    assert item.name == "smartphone"
 
     item.name = "smart"
-    assert item.name == "Smart"
+    assert item.name == "smart"
 
     item.name = 111
     assert item.name == "111"
@@ -73,3 +74,18 @@ def test_metods_repr_and_str():
     item1 = Item("Смартфон", 10000, 20)
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
     assert str(item1) == 'Смартфон'
+
+
+def test_if_phone_is_subclass():
+    phone = Phone("iPhone 14", 120_000, 5, 2)
+
+    assert issubclass(Phone, Item)
+    assert isinstance(phone, object)
+
+
+def test_add_class():
+    phone = Phone("iPhone 14", 120_000, 5, 2)
+    item = Item("iPhone 14", 120_000, 5)
+
+    assert phone + item == 10
+    assert phone + 5 != 10

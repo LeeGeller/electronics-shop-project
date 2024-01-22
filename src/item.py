@@ -28,6 +28,11 @@ class Item:
     def __str__(self):
         return f'{self.__name}'
 
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        raise Exception
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -55,7 +60,7 @@ class Item:
         """
         Inout new name
         """
-        self.__name = str(name).strip()[:10].capitalize()
+        self.__name = str(name).strip()[:10]
 
     @classmethod
     def instantiate_from_csv(cls, path_file: str) -> None:
