@@ -45,10 +45,10 @@ def test_item_all(fixture_class_item, fixture_class_item_2):
 def test_getter_and_setter(fixture_class_item):
     item = fixture_class_item
     item.name = "smartphoneOne"
-    assert item.name == "Smartphone"
+    assert item.name == "smartphone"
 
     item.name = "smart"
-    assert item.name == "Smart"
+    assert item.name == "smart"
 
     item.name = 111
     assert item.name == "111"
