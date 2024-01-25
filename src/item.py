@@ -23,7 +23,7 @@ class Item:
         self.all.append(self)
 
     def __repr__(self):
-        return f"Item('{self.__name}', {self.price}, {self.quantity})"
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
 
     def __str__(self):
         return f'{self.__name}'
@@ -82,7 +82,3 @@ class Item:
         """
         clean_string = string.strip().replace(',', '.')
         return int(float(clean_string))
-
-
-print(repr(Item("Смартфон", 10000, 20)))
-print(str(Item("Смартфон", 10000, 20)))
