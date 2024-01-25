@@ -18,13 +18,13 @@ class Mixin:
 
 class Keyboard(Item, Mixin):
 
-    # def __init__(self, name: str, price: float, quantity: int):
-    #     super().__init__(name, price, quantity)
-    #     Mixin.install_lang(self)
-    #
-    # def __repr__(self):
-    #     return f"Keyboard({self.name}, {self.price}, {self.quantity}, {self._language})"
-    #
+    def __init__(self, name: str, price: float, quantity: int):
+        super().__init__(name, price, quantity)
+        Mixin.install_lang(self)
+
+    def __repr__(self):
+        return f"Keyboard({self.name}, {self.price}, {self.quantity}, {self._language})"
+
     # @property
     # def language(self):
     #     return self._language
