@@ -1,11 +1,20 @@
-﻿from src.item import Item
+﻿import pytest
+
+from src.item import Item
 from src.keyboard import Keyboard, Mixin
 
-
-def test_class():
+@pytest.fixture
+def fixture_class():
     keyboard = Keyboard('Dark Project KD87A', 9600, 5)
+    return keyboard
 
-    assert isinstance(Keyboard, object)
+
+def test_class(fixture_class):
+    assert isinstance(fixture_class, object)
     assert issubclass(Keyboard, Item)
     assert issubclass(Keyboard, Mixin)
-    assert str(keyboard) == "Dark Proje"
+    assert str(fixture_class) == "Dark Proje"
+
+# def test_lang_in_keyboard():
+#
+#     assert ke
