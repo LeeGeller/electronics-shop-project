@@ -9,7 +9,7 @@ class Mixin:
     def install_lang(self):
         self._language = 'EN'
 
-    def change_lang(self):
+    def change_lang(self) -> None:
         if self._language == 'EN':
             self._language = 'RU'
         elif self._language == 'RU':
