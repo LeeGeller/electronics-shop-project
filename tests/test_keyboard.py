@@ -22,5 +22,8 @@ def test_lang_in_keyboard(fixture_class):
 
     fixture_class.change_lang()
     assert fixture_class.language == 'RU'
+
+    fixture_class.change_lang()
+    assert fixture_class.language == 'EN'
     #
     # fixture_class.language = 'CH'
