@@ -1,7 +1,10 @@
 import csv
+import pathlib
+
+from src.InstantiateCSVError import InstantiateCSVError
 
 
-class Item:
+class Item(InstantiateCSVError):
     """
     Класс для представления товара в магазине.
     """
@@ -69,11 +72,15 @@ class Item:
         """
         cls.all.clear()
 
-        with open(path_file, 'r', encoding='windows-1251') as csv_file:
-            file = csv.DictReader(csv_file)
-
-            for row in file:
-                cls(row['name'], float(row['price']), float(row['quantity']))
+        if pathlib.Path().exists() is None or path_file == None:
+            raise FileNotFoundError(f"Отсутствует файл item.csv_")
+        else:
+            with open(path_file, 'r', encoding='windows-1251') as csv_file:
+                file = csv.DictReader(csv_file)
+                for row in file:
+                    if len(row) != 3:
+                        raise InstantiateCSVError
+                    cls(row['name'], float(row['price']), float(row['quantity']))
 
     @staticmethod
     def string_to_number(string: str) -> int:
