@@ -91,7 +91,9 @@ def test_add_class():
     item = Item("iPhone 14", 120_000, 5)
 
     assert phone + item == 10
-    assert phone + 5 != 10
+    with pytest.raises(Exception):
+        (phone + 5)
+
 
 def test_csv_file_exceptions():
     ROOT = pathlib.Path(__file__).parent.parent
