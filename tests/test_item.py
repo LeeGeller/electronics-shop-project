@@ -1,5 +1,8 @@
 import pathlib
 
+import pytest
+
+from src.InstantiateCSVError import InstantiateCSVError
 from src.item import Item
 from src.phone import Phone
 
@@ -88,4 +91,18 @@ def test_add_class():
     item = Item("iPhone 14", 120_000, 5)
 
     assert phone + item == 10
-    assert phone + 5 != 10
+    with pytest.raises(Exception):
+        (phone + 5)
+
+
+def test_csv_file_exceptions():
+    ROOT = pathlib.Path(__file__).parent.parent
+    DATA1 = pathlib.Path.joinpath(ROOT / 'src/items2.csv')
+    DATA2 = pathlib.Path.joinpath(ROOT / 'src/items3.csv')
+
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv(DATA1)
+        Item.instantiate_from_csv()
+
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv(DATA2)
